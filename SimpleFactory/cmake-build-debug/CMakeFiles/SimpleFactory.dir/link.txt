@@ -1,0 +1,3 @@
+"D:\JetBrains\CLion 2017.2.1\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\SimpleFactory.dir/objects.a
+D:\MinGW\bin\ar.exe cr CMakeFiles\SimpleFactory.dir/objects.a @CMakeFiles\SimpleFactory.dir\objects1.rsp
+D:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\SimpleFactory.dir/objects.a -Wl,--no-whole-archive  -o SimpleFactory.exe -Wl,--out-implib,libSimpleFactory.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\SimpleFactory.dir\linklibs.rsp
