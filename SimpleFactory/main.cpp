@@ -4,31 +4,88 @@ using namespace std;
 
 class Operation {
 public:
-    double GetResult(double numberA, double numberB, char operate) {
+    Operation(double a, double b) {
+        _numberA = a;
+        _numberB = b;
+    }
+
+    virtual double GetResult() {}
+
+    double getA() {
+        return _numberA;
+    }
+
+    void setA(double value) {
+        _numberA = value;
+    }
+
+    double getB() {
+        return _numberB;
+    }
+
+    void setB(double value) {
+        _numberB = value;
+    }
+
+private:
+    double _numberA = 0;
+    double _numberB = 0;
+};
+
+
+class OperationAdd : public Operation {
+public:
+    OperationAdd(double a, double b) : Operation(a, b) {
+
+    }
+
+    double GetResult() override {
         double result = 0;
-        switch (operate) {
-            case '+':
-                result = numberA + numberB;
-                break;
-            case '-':
-                result = numberA - numberB;
-                break;
-            case '*':
-                result = numberA * numberB;
-                break;
-            case '/':
-                if (numberB == 0) {
-                    cout << "error" << endl;
-                    return 0;
-                }
-                result = numberA / numberB;
-                break;
-            default:
-                break;
-        }
+        result = getA() + getB();
+        return result;
     }
 };
 
+class OperationSub : public Operation {
+public:
+    OperationSub(double a, double b) : Operation(a, b) {
+
+    }
+
+    double GetResult() override {
+        double result = 0;
+        result = getA() - getB();
+        return result;
+    }
+};
+
+class OperationMul : public Operation {
+public:
+    OperationMul(double a, double b) : Operation(a, b) {
+
+    }
+
+    double GetResult() override {
+        double result = 0;
+        result = getA() * getB();
+        return result;
+    }
+};
+
+class OperationDiv : public Operation {
+public:
+    OperationDiv(double a, double b) : Operation(a, b) {}
+
+    double GetResult() override {
+        double result = 0;
+        if (getB() == 0) {
+            return 1;
+        }
+
+        result = getA() / getB();
+        return result;
+    }
+};
 
 int main() {
     try {
@@ -45,8 +102,8 @@ int main() {
 
         cout << "answer:" << d << endl;
     }
-    catch (exception& e) {
-        cout << "exception" << e.what()<<endl;
+    catch (exception &e) {
+        cout << "exception" << e.what() << endl;
     }
 
     return 0;
